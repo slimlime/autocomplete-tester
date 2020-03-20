@@ -1,0 +1,7 @@
+{
+  "name": "autocomplete-tester",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
