@@ -1,4 +1,6 @@
-// tslint:disable
+/* eslint-disable */
+/* tslint:disable */
+
 import { AppPage } from "./app.po";
 
 describe("new App", () => {

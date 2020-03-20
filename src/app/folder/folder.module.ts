@@ -1,4 +1,5 @@
-// tslint:disable
+/* eslint-disable */
+/* tslint:disable */
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -11,12 +12,7 @@ import { FolderPageRoutingModule } from "./folder-routing.module";
 import { FolderPage } from "./folder.page";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    FolderPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, FolderPageRoutingModule],
   declarations: [FolderPage]
 })
 export class FolderPageModule {}

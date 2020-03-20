@@ -1,5 +1,7 @@
-// tslint:disable no-submodule-imports no-any no-unsafe-any completed-docs no-floating-promises newline-per-chained-call
-// tslint:disable typedef
+/* eslint-disable */
+/* tslint:disable
+ no-submodule-imports no-any no-unsafe-any completed-docs no-floating-promises newline-per-chained-call
+*/
 
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";

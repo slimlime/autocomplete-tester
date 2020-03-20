@@ -1,4 +1,5 @@
-// tslint:disable
+/* eslint-disable */
+/* tslint:disable */
 
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -14,11 +15,7 @@ import { AppRoutingModule } from "./app-routing.module";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,

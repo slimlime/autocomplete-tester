@@ -1,4 +1,5 @@
-// tslint:disable
+/* eslint-disable */
+/* tslint:disable */
 
 /**
  * Prevents Angular change detection from

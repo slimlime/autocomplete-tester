@@ -1,4 +1,5 @@
-// tslint:disable
+/* eslint-disable */
+/* tslint:disable */
 
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
@@ -11,7 +12,7 @@ describe("FolderPage", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FolderPage ],
+      declarations: [FolderPage],
       imports: [IonicModule.forRoot(), RouterModule.forRoot([])]
     }).compileComponents();
 
