@@ -1,5 +1,5 @@
 {
-  "extends": "tslint:recommended",
+  "extends": "tslint:all",
   "rulesDirectory": [
     "codelyzer"
   ],
@@ -17,7 +17,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      120
     ],
     "member-access": false,
     "member-ordering": [
@@ -83,6 +83,36 @@
       "app",
       "page",
       "kebab-case"
+    ],
+    
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
+    "no-parameter-properties": false,
+    "no-submodule-imports": [
+      true,
+      "rxjs"
+    ],
+    "prefer-function-over-method": [
+      true,
+      "allow-public"
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "variable-declaration-ignore-function",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
+    "only-arrow-functions": [
+      true,
+      "allow-declarations"
     ]
   }
 }
