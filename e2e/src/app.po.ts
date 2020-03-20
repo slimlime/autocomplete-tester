@@ -1,4 +1,5 @@
-import { browser, by, element } from 'protractor';
+// tslint:disable
+import { browser, by, element } from "protractor";
 
 export class AppPage {
   navigateTo(destination) {
@@ -6,6 +7,6 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.deepCss('app-root ion-content')).getText();
+    return element(by.deepCss("app-root ion-content")).getText();
   }
 }

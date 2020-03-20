@@ -58,7 +58,7 @@
     "ordered-imports": false,
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
     "trailing-comma": false,
     "no-output-on-prefix": true,
@@ -92,7 +92,8 @@
     "no-parameter-properties": false,
     "no-submodule-imports": [
       true,
-      "rxjs"
+      "rxjs",
+      "@angular/core/testing"
     ],
     "prefer-function-over-method": [
       true,

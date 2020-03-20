@@ -1,11 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+// tslint:disable
+import { TestBed } from "@angular/core/testing";
 
-import { AutocompleteService } from './autocomplete.service';
+import { AutocompleteService } from "./autocomplete.service";
 
-describe('AutocompleteService', () => {
+describe("AutocompleteService", () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  it("should be created", () => {
     const service: AutocompleteService = TestBed.get(AutocompleteService);
     expect(service).toBeTruthy();
   });

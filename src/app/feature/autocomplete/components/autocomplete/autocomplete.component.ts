@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
+/**
+ * Component
+ */
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
+  selector: "app-autocomplete",
+  templateUrl: "./autocomplete.component.html",
+  styleUrls: ["./autocomplete.component.scss"],
 })
 export class AutocompleteComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {}
+  /**
+   * on init
+   */
+  ngOnInit(): void {}
 
 }
