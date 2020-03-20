@@ -1,0 +1,5 @@
+{
+    "typescriptHero.imports.stringQuoteStyle": "\"",
+    "prettier.quoteProps": "consistent",
+    "autoimport.doubleQuotes": true
+}
