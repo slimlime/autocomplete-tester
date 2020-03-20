@@ -84,7 +84,9 @@
       "page",
       "kebab-case"
     ],
-    
+    "linebreak-style": [
+      false
+    ],
     "file-name-casing": [
       true,
       "kebab-case"
