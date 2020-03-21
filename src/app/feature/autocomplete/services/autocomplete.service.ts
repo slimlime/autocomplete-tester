@@ -5,8 +5,10 @@ import { map, startWith } from "rxjs/operators";
 import {
   getSearchTextInput,
   getSearchFilteredOptions,
-  isSearchTextFoundWithinOption
+  isSearchTextFoundWithinOption,
+  getDisplayName
 } from "../utilities/autocomplete-utility/autocomplete-utility";
+import { AutocompleteSearchFilterable } from "../models/autocomplete-search-filterable";
 
 /**
  * Generic autocompletion service
@@ -16,7 +18,7 @@ import {
 @Injectable({
   providedIn: "root"
 })
-export class AutocompleteService<T> {
+export class AutocompleteService<T extends AutocompleteSearchFilterable> {
   /**
    * Base options of autocompletable service
    * e.g. Patient[]
@@ -78,5 +80,23 @@ export class AutocompleteService<T> {
     );
 
     return filteredOptions;
+  }
+
+  /**
+   *
+   *
+   *
+   *
+   *
+   *
+   */
+  /**
+   * Gets display name for the same type as instantiated...
+   * Extends AutosearchFilterable .name access
+   *
+   * Only instance methods can be called from Angular html template view.
+   */
+  getDisplayName(displayableOption: T): string {
+    return getDisplayName(displayableOption);
   }
 }

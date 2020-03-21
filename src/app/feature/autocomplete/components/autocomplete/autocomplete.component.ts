@@ -20,7 +20,8 @@ import { AutocompleteService } from "./../../services/autocomplete.service";
   templateUrl: "./autocomplete.component.html",
   styleUrls: ["./autocomplete.component.scss"]
 })
-export class AutocompleteComponent implements OnInit, OnChanges {
+export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
+  implements OnInit, OnChanges {
   /**
    * Nested patient form control of autocomplete patient component
    * Instantiate due to strict checks. TypeScript setting. strictPropertyInitialization
@@ -46,12 +47,7 @@ export class AutocompleteComponent implements OnInit, OnChanges {
   /**
    * Creates an instance of autocomplete patient component.
    */
-  constructor(
-    public autocompletePatientService: AutocompleteService<
-      AutocompleteSearchFilterable
-    >,
-    public patientPipe: PatientPipe
-  ) {}
+  constructor(public autocompleteService: AutocompleteService<T>) {}
 
   /**
    * on changes
@@ -89,8 +85,15 @@ export class AutocompleteComponent implements OnInit, OnChanges {
       this.nestedPatientFormControl
     );
 
-    const options: Observable<Patient[]> = this.autocompletePatientService.getSetupCreatedSingletonFilteredOptions(
+    const options: Observable<T[]> = this.autocompleteService.getCreatedFilterOptions(
       this.passFormControl
     );
   }
+
+  /**
+   * Gets display name
+   *
+   * Only instance methods can be called from Angular html template view.
+   */
+  getDisplayName();
 }
