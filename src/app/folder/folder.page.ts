@@ -52,17 +52,47 @@ export class FolderPage implements OnInit {
     const maxDate = new Date();
     let seed = 1337; // Any 32-bit integer;
     let rand = jsf32(0xf1ea5eed, seed, seed, seed);
-    const myNumRandomiser: () => number = numberRandomiser();
+    const runMyNumRandomiser: () => number = numberRandomiser();
     // const filledDateArray = Array.from({length: 20, () => ({})})
     const dates: ReadonlyArray<Date> = Array(20).fill(
-      getRandomDateWithin(minDate, maxDate, myNumRandomiser())
+      getRandomDateWithin(minDate, maxDate, runMyNumRandomiser())
     );
     const lol = Array(20);
     for (let i = 0; i < 20; i++) {
-      lol[i] = getRandomDateWithin(minDate, maxDate, myNumRandomiser());
+      lol[i] = getRandomDateWithin(minDate, maxDate, runMyNumRandomiser());
     }
     console.log(dates);
     console.log(lol);
+    const datesArrayFrom = Array.from({ length: 20 }, u =>
+      getRandomDateWithin(minDate, maxDate, runMyNumRandomiser())
+    );
+    console.log(
+      "FolderPage -> randomDateStuff -> datesArrayFrom",
+      datesArrayFrom
+    );
+
+    // Works
+    const run = xoshiro128ss(0xf1ea5eed, seed, seed, seed);
+    const datesArrayFromXoshiro = Array.from({ length: 20 }, u =>
+      getRandomDateWithin(minDate, maxDate, run())
+    );
+    console.log(
+      "FolderPage -> randomDateStuff -> datesArrayFromXoshiro",
+      datesArrayFromXoshiro
+    );
+
+    // Does not work
+    const datesArrayFromXoshiroNotRunnable = Array.from({ length: 20 }, u =>
+      getRandomDateWithin(
+        minDate,
+        maxDate,
+        xoshiro128ss(0xf1ea5eed, seed, seed, seed)()
+      )
+    );
+    console.log(
+      "FolderPage -> randomDateStuff -> datesArrayFromXoshiro",
+      datesArrayFromXoshiroNotRunnable
+    );
   }
   // tslint:enable
 }
