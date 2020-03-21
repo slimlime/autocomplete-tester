@@ -2,16 +2,14 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 
-
+import { AutocompleteComponent } from "./../../../feature/autocomplete/components/autocomplete/autocomplete.component";
 
 /**
  * SharedModule
  */
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    IonicModule
-  ]
+  declarations: [AutocompleteComponent],
+  imports: [CommonModule, IonicModule],
+  exports: [AutocompleteComponent]
 })
-export class SharedModule { }
+export class SharedModule {}

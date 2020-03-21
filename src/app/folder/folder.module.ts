@@ -1,3 +1,4 @@
+import { SharedModule } from "./../shared/modules/shared/shared.module";
 /* eslint-disable */
 /* tslint:disable */
 
@@ -12,7 +13,13 @@ import { FolderPageRoutingModule } from "./folder-routing.module";
 import { FolderPage } from "./folder.page";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, FolderPageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    IonicModule,
+    FolderPageRoutingModule
+  ],
   declarations: [FolderPage]
 })
 export class FolderPageModule {}
