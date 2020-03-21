@@ -61,8 +61,10 @@ export class FolderPage implements OnInit {
     for (let i = 0; i < 20; i++) {
       lol[i] = getRandomDateWithin(minDate, maxDate, runMyNumRandomiser());
     }
-    console.log(dates);
-    console.log(lol);
+
+    console.log("FolderPage -> randomDateStuff -> dates", dates);
+    console.log("FolderPage -> randomDateStuff -> lol", lol);
+
     const datesArrayFrom = Array.from({ length: 20 }, u =>
       getRandomDateWithin(minDate, maxDate, runMyNumRandomiser())
     );

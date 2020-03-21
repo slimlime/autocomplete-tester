@@ -116,8 +116,8 @@ export const lcg = s => () =>
  * Function alias.
  * @param seed the seed...
  */
-export function rng(seed): number {
-  return xoshiro128ss(seed, 9999, "9999", 9999);
+export function rng(seed): () => number {
+  return xoshiro128ss(seed, 9999, 9999, 9999);
 }
 
 /**
