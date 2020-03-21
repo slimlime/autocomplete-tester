@@ -1,4 +1,13 @@
 /**
+ * ## - Warning: Usage requires proper context scope
+ * ```ts
+ *  const myNumRandomiser: () => number = numberRandomiser();
+ *  const myRandomDates = Array(20);
+ *  for (let i = 0; i < 20; i++) {
+ *    myRandomDates[i] = getRandomDateWithin(minDate, maxDate, myNumRandomiser());
+ *  }
+ * // Otherwise all the random dates will be the same.. -TODO: Investigate
+ * ```
  * Seed random dates within a given range.
  * @param minimum The minimum of the range
  * @param maximum Maximum date range to randomise within.
