@@ -43,9 +43,8 @@ export class FolderPage implements OnInit {
     console.log(xoshiro128ss(10000, 555, 555, 555));
     console.log(xoshiro128ss(20002, 2, 3, 4));
     console.log(xoshiro128ss(15000, 2, 3, 8994));
-    console.log(xoshiro128ss(15001, "999992", 3, 4));
-    console.log(rng(1));
-    console.log(rng(2));
+    console.log(rng(1)());
+    console.log(rng(2)());
     const min = new Date().getTime() - getMillisecondsFromYears(80);
     const minDate = new Date(min);
     console.log("FolderPage -> ngOnInit -> minDate", minDate);
