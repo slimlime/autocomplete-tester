@@ -1,3 +1,4 @@
+import { AutocompleteModule } from "./../../../feature/autocomplete/components/autocomplete/autocomplete.module";
 import {
   MatInputModule,
   MatAutocompleteModule,
@@ -14,7 +15,7 @@ import { AutocompleteComponent } from "./../../../feature/autocomplete/component
  * SharedModule
  */
 @NgModule({
-  declarations: [],
+  declarations: [AutocompleteModule],
   imports: [
     CommonModule,
     IonicModule,
@@ -24,6 +25,6 @@ import { AutocompleteComponent } from "./../../../feature/autocomplete/component
     MatAutocompleteModule,
     MatFormFieldModule
   ],
-  exports: []
+  exports: [AutocompleteModule]
 })
 export class SharedModule {}
