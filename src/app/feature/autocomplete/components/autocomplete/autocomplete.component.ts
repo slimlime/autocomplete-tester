@@ -55,7 +55,10 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
    * Creates an instance of autocomplete component.
    */
   constructor(
-    @Inject(someObjects) public autocompleteService: AutocompleteService<T>
+    @Inject(someObjects)
+    public autocompleteService: AutocompleteService<
+      AutocompleteSearchFilterable
+    >
   ) {}
 
   /**

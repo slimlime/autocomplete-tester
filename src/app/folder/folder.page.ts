@@ -1,11 +1,4 @@
-import {
-  Component,
-  InjectionToken,
-  OnInit,
-  Injector,
-  StaticProvider
-} from "@angular/core";
-import { inject } from "@angular/core/testing";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 
@@ -17,45 +10,25 @@ import {
   rng,
   xoshiro128ss
 } from "../feature/autocomplete/utilities/seeder";
+import { AutocompleteComponent } from "./../feature/autocomplete/components/autocomplete/autocomplete.component";
 import { AutocompleteSearchFilterable } from "./../feature/autocomplete/models/autocomplete-search-filterable";
 import { AutocompleteService } from "./../feature/autocomplete/services/autocomplete.service";
+import { getBespokeAutocompleteServiceInjected } from "./../feature/autocomplete/utilities/angular-injectables/injectable";
 
 /* eslint-disable */
 const someObjects: AutocompleteSearchFilterable[] = [{ name: "hi" }];
 
-const MY_SERVICE_TOKEN = new InjectionToken<
-  AutocompleteService<AutocompleteSearchFilterable>
->("Manually constructed", {
-  providedIn: "root",
-  factory: () =>
-    new AutocompleteService<AutocompleteSearchFilterable>(
-      inject(someObjects, a => {
-        console.log("inject needs a function huh", a);
-      })
-    )
-});
-
-const myToken = new InjectionToken<
-  AutocompleteService<AutocompleteSearchFilterable>
->("someTest");
-
-const myACServiceTokenTestObjectsProvider: StaticProvider = {
-  provide: myToken,
-  useValue: someObjects
-};
-
-const injectorOptionsObj: {
-  providers: StaticProvider[];
-  parent?: Injector;
-  name?: string;
-} = {
-  providers: [myACServiceTokenTestObjectsProvider]
-};
-const injector = Injector.create(injectorOptionsObj);
-console.log("injector", injector);
-const testGet = injector.get(myToken);
-console.log("testGet", testGet);
-console.log("FolderPage -> testGet", testGet);
+// const MY_SERVICE_TOKEN = new InjectionToken<
+//   AutocompleteService<AutocompleteSearchFilterable>
+// >("Manually constructed", {
+//   providedIn: "root",
+//   factory: () =>
+//     new AutocompleteService<AutocompleteSearchFilterable>(
+//       inject(someObjects, a => {
+//         console.log("inject needs a function huh", a);
+//       })
+//     )
+// });
 
 @Component({
   selector: "app-folder",
@@ -63,10 +36,25 @@ console.log("FolderPage -> testGet", testGet);
   styleUrls: ["./folder.page.scss"]
 })
 export class FolderPage implements OnInit {
+  // @ViewChild("appAutocomplete") appAutocomplete: AutocompleteComponent<
+  //   AutocompleteSearchFilterable
+  // >;
+  /**
+   * Folder  of folder page
+   */
   public folder: string;
+  /**
+   * Form control of folder page
+   */
   public formControl = new FormControl();
+  /**
+   * Autocomplete service of folder page
+   */
+  public autocompleteService: AutocompleteService<AutocompleteSearchFilterable>;
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
+    console.log("FolderPage -> constructor -> activatedRoute", activatedRoute);
+    this.autocompleteService = getBespokeAutocompleteServiceInjected();
     // const someFactory = () => { return new AutocompleteService<AutocompleteSearchFilterable>(someObjects) }
     //   const lolInjector = Injector.create({
     //     providers: [{ provide: AutocompleteService, useValue: someObjects, useFactory: someFactory }]
@@ -76,9 +64,11 @@ export class FolderPage implements OnInit {
     //     "FolderPage -> constructor -> someInjectedGetToken",
     //     someInjectedGetToken
     //   );
+    console.log("end constructor");
   }
 
   ngOnInit() {
+    console.log("FolderPage -> ngOnInit -> ngOnInit");
     this.randomDateStuff();
   }
 
