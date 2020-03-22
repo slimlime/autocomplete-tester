@@ -28,7 +28,7 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
    * Setup if you want something for users to search.
    * The base options that autocomplete will be filter populated on.
    */
-  @Inject("baseOptions") baseOptions: T[] = [];
+  baseOptions: T[] = [];
 
   /**
    * Filtered options of autocompletable service
@@ -40,10 +40,9 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
   /**
    * Creates an instance of autocomplete service.
    */
-  constructor(someTest: any) {
+  constructor() {
     console.log(
-      "AutocompleteService<T -> constructor -> constructor someTest injection",
-      someTest
+      "AutocompleteService<T -> constructor -> constructor someTest injection"
     );
   }
   /**
@@ -53,7 +52,8 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
    * @returns The options now assigned to the service.
    */
   setupOptionsWith(someOtherAltOptions: T[]): T[] {
-    this.baseOptions = someOtherAltOptions;
+    // A myArray.forEach(val => myClonedArray.push(Object.assign({}, val)));
+    this.baseOptions = someOtherAltOptions.slice();
 
     return this.baseOptions;
   }

@@ -17,7 +17,7 @@ import {
   isSearchTextFoundWithinOption
 } from "./../../utilities/autocomplete-utility/autocomplete-utility";
 
-const someObjects: AutocompleteSearchFilterable[] = [{ name: "hi" }];
+// const someObjects: AutocompleteSearchFilterable[] = [{ name: "hi" }];
 /**
  * Component
  */
@@ -29,7 +29,7 @@ const someObjects: AutocompleteSearchFilterable[] = [{ name: "hi" }];
 export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
   implements OnInit, OnChanges {
   /**
-   * Neste  form control of autocomplete component
+   * Nested form control of autocomplete component
    * Instantiate due to strict checks. TypeScript setting. strictPropertyInitialization
    */
   nestedFormControl: FormControl = new FormControl();
@@ -54,10 +54,9 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
   /**
    * Creates an instance of autocomplete component.
    */
-  constructor(
-    @Inject(someObjects)
-    public autocompleteService: AutocompleteService<T>
-  ) {}
+  constructor(public autocompleteService: AutocompleteService<T>) {
+    console.log("constructor -> autocompleteService", autocompleteService);
+  }
 
   /**
    * on changes
@@ -92,7 +91,7 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
   ngOnInit(): void {
     console.log(
       "AutocompleteComponent -> ngOnInit -> form control",
-      this.nestedFormControl
+      this.nestedFormControl.value
     );
 
     const options: Observable<T[]> = this.autocompleteService.getCreatedFilterOptions(

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 
 import {
@@ -46,15 +46,19 @@ export class FolderPage implements OnInit {
   /**
    * Form control of folder page
    */
-  public formControl = new FormControl();
+  public formGroup: FormGroup;
   /**
    * Autocomplete service of folder page
    */
   public autocompleteService: AutocompleteService<AutocompleteSearchFilterable>;
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
+  constructor(public activatedRoute: ActivatedRoute, public fb: FormBuilder) {
     console.log("FolderPage -> constructor -> activatedRoute", activatedRoute);
-    this.autocompleteService = getBespokeAutocompleteServiceInjected();
+    // this.autocompleteService = getBespokeAutocompleteServiceInjected();
+
+    this.formGroup = this.fb.group({
+      person: "Smith, "
+    });
     // const someFactory = () => { return new AutocompleteService<AutocompleteSearchFilterable>(someObjects) }
     //   const lolInjector = Injector.create({
     //     providers: [{ provide: AutocompleteService, useValue: someObjects, useFactory: someFactory }]
