@@ -4,7 +4,8 @@ import {
   OnChanges,
   OnInit,
   SimpleChange,
-  SimpleChanges
+  SimpleChanges,
+  Inject
 } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { Observable } from "rxjs";
@@ -16,6 +17,7 @@ import {
   isSearchTextFoundWithinOption
 } from "./../../utilities/autocomplete-utility/autocomplete-utility";
 
+const someObjects: AutocompleteSearchFilterable[] = [{ name: "hi" }];
 /**
  * Component
  */
@@ -52,7 +54,9 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
   /**
    * Creates an instance of autocomplete component.
    */
-  constructor(public autocompleteService: AutocompleteService<T>) {}
+  constructor(
+    @Inject(someObjects) public autocompleteService: AutocompleteService<T>
+  ) {}
 
   /**
    * on changes

@@ -1,14 +1,16 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, InjectionToken } from "@angular/core";
+import { inject } from "@angular/core/testing";
 import { AbstractControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+
 import {
-  getSearchTextInput,
+  getDisplayName,
   getSearchFilteredOptions,
-  isSearchTextFoundWithinOption,
-  getDisplayName
+  getSearchTextInput,
+  isSearchTextFoundWithinOption
 } from "../utilities/autocomplete-utility/autocomplete-utility";
-import { AutocompleteSearchFilterable } from "../models/autocomplete-search-filterable";
+import { AutocompleteSearchFilterable } from "./../models/autocomplete-search-filterable";
 
 /**
  * Generic autocompletion service
@@ -36,6 +38,15 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
   filteredOptions: Observable<T[]> = new Observable();
 
   /**
+   * Creates an instance of autocomplete service.
+   */
+  constructor(someTest: any) {
+    console.log(
+      "AutocompleteService<T -> constructor -> constructor someTest injection",
+      someTest
+    );
+  }
+  /**
    * Setups service list ac options with given options
    * Should not be used as options are injected with the service.
    * @param someOtherAltOptions arbitrary list of objects.
@@ -57,12 +68,12 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
    */
   getCreatedFilterOptions(
     formControl: AbstractControl,
-    getFilterableDisplayName: (objOption: T) => string
-    // - FIXME: Make this customisable in caller. optionFilter: (objOption: T) => boolean
+    getFilterableDisplayName: (objOption: T) => string,
+    optionFilter: (objOption: T) => boolean
   ): Observable<T[]> {
     // tslint:disable: max-line-length no-any comment-format
     // prettier-ignore
-    const [baseOptions, optionNamer, optionSearcher]: [T[], (objOption: T) => string, (a: string, b: string) => boolean] = [this.baseOptions, getFilterableDisplayName, isSearchTextFoundWithinOption]
+    const [baseOptions, optionNamer, optionSearcher]: [T[], (objOption: T) => string, (a: string, b: string) => boolean] = [this.baseOptions, getFilterableDisplayName, isSearchTextFoundWithinOption];
 
     // User-input land dragons
     const valueChanges: Observable<any> = formControl.valueChanges;
