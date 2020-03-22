@@ -11,6 +11,10 @@ import { Observable } from "rxjs";
 
 import { AutocompleteSearchFilterable } from "../../models/autocomplete-search-filterable";
 import { AutocompleteService } from "./../../services/autocomplete.service";
+import {
+  getDisplayName,
+  isSearchTextFoundWithinOption
+} from "./../../utilities/autocomplete-utility/autocomplete-utility";
 
 /**
  * Component
@@ -23,29 +27,30 @@ import { AutocompleteService } from "./../../services/autocomplete.service";
 export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
   implements OnInit, OnChanges {
   /**
-   * Nested patient form control of autocomplete patient component
+   * Neste  form control of autocomplete component
    * Instantiate due to strict checks. TypeScript setting. strictPropertyInitialization
    */
-  nestedPatientFormControl: FormControl = new FormControl();
+  nestedFormControl: FormControl = new FormControl();
 
   /**
-   * Input  of autocomplete patient component
+   * Input  of autocomplete component
+   * Pass the form control
    */
   // tslint:disable-next-line: no-unsafe-any
   @Input()
   set passFormControl(formControlVal: FormControl) {
     console.log(
-      "AutocompletePatientComponent -> setPassFormControl -> val",
+      "AutocompleteComponent -> setPassFormControl -> val",
       formControlVal
     );
-    this.nestedPatientFormControl = formControlVal;
+    this.nestedFormControl = formControlVal;
   }
 
   get passFormControl(): FormControl {
-    return this.nestedPatientFormControl;
+    return this.nestedFormControl;
   }
   /**
-   * Creates an instance of autocomplete patient component.
+   * Creates an instance of autocomplete component.
    */
   constructor(public autocompleteService: AutocompleteService<T>) {}
 
@@ -81,12 +86,13 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
    */
   ngOnInit(): void {
     console.log(
-      "AutocompletePatientComponent -> ngOnInit -> form control",
-      this.nestedPatientFormControl
+      "AutocompleteComponent -> ngOnInit -> form control",
+      this.nestedFormControl
     );
 
     const options: Observable<T[]> = this.autocompleteService.getCreatedFilterOptions(
-      this.passFormControl
+      this.passFormControl,
+      getDisplayName
     );
   }
 
@@ -95,5 +101,7 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
    *
    * Only instance methods can be called from Angular html template view.
    */
-  getDisplayName();
+  getDisplayName(option: T): string {
+    return getDisplayName(option);
+  }
 }

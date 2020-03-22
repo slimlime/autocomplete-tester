@@ -57,8 +57,8 @@ export class AutocompleteService<T extends AutocompleteSearchFilterable> {
    */
   getCreatedFilterOptions(
     formControl: AbstractControl,
-    getFilterableDisplayName: (objOption: T) => string,
-    optionFilter: (objOption: T) => boolean
+    getFilterableDisplayName: (objOption: T) => string
+    // - FIXME: Make this customisable in caller. optionFilter: (objOption: T) => boolean
   ): Observable<T[]> {
     // tslint:disable: max-line-length no-any comment-format
     // prettier-ignore

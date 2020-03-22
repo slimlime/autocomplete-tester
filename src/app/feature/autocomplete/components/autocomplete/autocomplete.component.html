@@ -1,3 +1,22 @@
-<p>
-  autocomplete works!
-</p>
+<mat-form-field class="app-mat-form-field" style="width: 30em;">
+  <input
+    type="text"
+    placeholder="autocompletableSearch"
+    matInput
+    [formControl]="nestedFormControl"
+    [matAutocomplete]="matAutocompleteTemplateRef"
+  />
+
+  <mat-autocomplete
+    #matAutocompleteTemplateRef
+    [displayWith]="this.autocompleteService.getDisplayName"
+    autoActiveFirstOptions="true"
+  >
+    <mat-option
+      *ngFor="let option of this.autocompleteService.filteredOptions | async"
+      [value]="option"
+    >
+      {{ option.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
