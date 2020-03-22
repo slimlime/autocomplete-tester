@@ -56,9 +56,7 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
    */
   constructor(
     @Inject(someObjects)
-    public autocompleteService: AutocompleteService<
-      AutocompleteSearchFilterable
-    >
+    public autocompleteService: AutocompleteService<T>
   ) {}
 
   /**
