@@ -19,7 +19,6 @@ import { AutocompleteComponent } from "./autocomplete.component";
   imports: [
     CommonModule,
     IonicModule,
-    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
