@@ -18,6 +18,7 @@ import {
 })
 export class FolderPage implements OnInit {
   public folder: string;
+  public formControl = new FormControl();
 
   constructor(private readonly activatedRoute: ActivatedRoute) {}
 
@@ -96,4 +97,6 @@ export class FolderPage implements OnInit {
     );
   }
   // tslint:enable
+
+  getRandomisedSeedOptions() {}
 }

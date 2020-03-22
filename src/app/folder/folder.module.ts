@@ -4,7 +4,7 @@ import { SharedModule } from "./../shared/modules/shared/shared.module";
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { IonicModule } from "@ionic/angular";
 
@@ -16,6 +16,7 @@ import { FolderPage } from "./folder.page";
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     IonicModule,
     FolderPageRoutingModule

@@ -1,5 +1,3 @@
-import { AutocompleteComponent } from "./autocomplete.component";
-import { SharedModule } from "../../../../shared/modules/shared/shared.module";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -9,6 +7,9 @@ import {
   MatInputModule
 } from "@angular/material";
 import { IonicModule } from "@ionic/angular";
+
+import { SharedModule } from "../../../../shared/modules/shared/shared.module";
+import { AutocompleteComponent } from "./autocomplete.component";
 
 /**
  * Ng module for Angular Material and form usage in component.
