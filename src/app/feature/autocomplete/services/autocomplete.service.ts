@@ -1,12 +1,16 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, InjectionToken } from "@angular/core";
+import { inject } from "@angular/core/testing";
 import { AbstractControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+
 import {
-  getSearchTextInput,
+  getDisplayName,
   getSearchFilteredOptions,
+  getSearchTextInput,
   isSearchTextFoundWithinOption
 } from "../utilities/autocomplete-utility/autocomplete-utility";
+import { AutocompleteSearchFilterable } from "./../models/autocomplete-search-filterable";
 
 /**
  * Generic autocompletion service
@@ -16,7 +20,7 @@ import {
 @Injectable({
   providedIn: "root"
 })
-export class AutocompleteService<T> {
+export class AutocompleteService<T extends AutocompleteSearchFilterable> {
   /**
    * Base options of autocompletable service
    * e.g. Patient[]
@@ -24,7 +28,7 @@ export class AutocompleteService<T> {
    * Setup if you want something for users to search.
    * The base options that autocomplete will be filter populated on.
    */
-  @Inject("baseOptions") baseOptions: T[] = [];
+  baseOptions: T[] = [];
 
   /**
    * Filtered options of autocompletable service
@@ -34,13 +38,22 @@ export class AutocompleteService<T> {
   filteredOptions: Observable<T[]> = new Observable();
 
   /**
+   * Creates an instance of autocomplete service.
+   */
+  constructor() {
+    console.log(
+      "AutocompleteService<T -> constructor -> constructor someTest injection"
+    );
+  }
+  /**
    * Setups service list ac options with given options
    * Should not be used as options are injected with the service.
    * @param someOtherAltOptions arbitrary list of objects.
    * @returns The options now assigned to the service.
    */
   setupOptionsWith(someOtherAltOptions: T[]): T[] {
-    this.baseOptions = someOtherAltOptions;
+    // A myArray.forEach(val => myClonedArray.push(Object.assign({}, val)));
+    this.baseOptions = someOtherAltOptions.slice();
 
     return this.baseOptions;
   }
@@ -55,12 +68,12 @@ export class AutocompleteService<T> {
    */
   getCreatedFilterOptions(
     formControl: AbstractControl,
-    getFilterableDisplayName: (objOption: T) => string,
-    optionFilter: (objOption: T) => boolean
+    getFilterableDisplayName: (objOption: T) => string
+    // - FIXME: Make this passable. Default value optionSearcher. optionFilter: (objOption: T) => boolean
   ): Observable<T[]> {
     // tslint:disable: max-line-length no-any comment-format
     // prettier-ignore
-    const [baseOptions, optionNamer, optionSearcher]: [T[], (objOption: T) => string, (a: string, b: string) => boolean] = [this.baseOptions, getFilterableDisplayName, isSearchTextFoundWithinOption]
+    const [baseOptions, optionNamer, optionSearcher]: [T[], (objOption: T) => string, (a: string, b: string) => boolean] = [this.baseOptions, getFilterableDisplayName, isSearchTextFoundWithinOption];
 
     // User-input land dragons
     const valueChanges: Observable<any> = formControl.valueChanges;
@@ -78,5 +91,23 @@ export class AutocompleteService<T> {
     );
 
     return filteredOptions;
+  }
+
+  /**
+   *
+   *
+   *
+   *
+   *
+   *
+   */
+  /**
+   * Gets display name for the same type as instantiated...
+   * Extends AutosearchFilterable .name access
+   *
+   * Only instance methods can be called from Angular html template view.
+   */
+  getDisplayName(displayableOption: T): string {
+    return getDisplayName(displayableOption);
   }
 }
