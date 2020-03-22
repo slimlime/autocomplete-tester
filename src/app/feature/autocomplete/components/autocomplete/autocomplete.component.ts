@@ -95,13 +95,4 @@ export class AutocompleteComponent<T extends AutocompleteSearchFilterable>
       getDisplayName
     );
   }
-
-  /**
-   * Gets display name
-   *
-   * Only instance methods can be called from Angular html template view.
-   */
-  getDisplayName(option: T): string {
-    return getDisplayName(option);
-  }
 }
