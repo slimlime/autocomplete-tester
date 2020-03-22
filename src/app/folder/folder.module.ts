@@ -14,7 +14,7 @@ import { FolderPageRoutingModule } from "./folder-routing.module";
 import { FolderPage } from "./folder.page";
 
 @NgModule({
-  imports: [CommonModule, SharedModule, IonicModule, FolderPageRoutingModule],
+  imports: [CommonModule, IonicModule, SharedModule, FolderPageRoutingModule],
   declarations: [FolderPage]
 })
 export class FolderPageModule {}
