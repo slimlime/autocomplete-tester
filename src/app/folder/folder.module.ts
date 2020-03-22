@@ -1,3 +1,4 @@
+import { AutocompleteModule } from "./../feature/autocomplete/components/autocomplete/autocomplete.module";
 import { SharedModule } from "./../shared/modules/shared/shared.module";
 /* eslint-disable */
 /* tslint:disable */
@@ -15,9 +16,8 @@ import { FolderPage } from "./folder.page";
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
+    AutocompleteModule,
     IonicModule,
     FolderPageRoutingModule
   ],

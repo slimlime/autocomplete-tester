@@ -18,10 +18,10 @@ import { AutocompleteComponent } from "./autocomplete.component";
   declarations: [AutocompleteComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
     IonicModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule

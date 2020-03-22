@@ -1,3 +1,8 @@
+import {
+  MatInputModule,
+  MatAutocompleteModule,
+  MatFormFieldModule
+} from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -9,8 +14,16 @@ import { AutocompleteComponent } from "./../../../feature/autocomplete/component
  * SharedModule
  */
 @NgModule({
-  declarations: [AutocompleteComponent],
-  imports: [CommonModule, IonicModule],
-  exports: [AutocompleteComponent]
+  declarations: [],
+  imports: [
+    CommonModule,
+    IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
+  ],
+  exports: []
 })
 export class SharedModule {}
