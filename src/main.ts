@@ -1,3 +1,4 @@
+import "hammerjs";
 /* eslint-disable */
 /* tslint:disable */
 
